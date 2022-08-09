@@ -1,11 +1,4 @@
-package mockdemo
-
-import "errors"
-
-var (
-	ErrRecordNotFound   = errors.New("record not found")
-	ErrConstraintUnique = errors.New("constraint unique")
-)
+package domain
 
 type Article struct {
 	ID      int64
