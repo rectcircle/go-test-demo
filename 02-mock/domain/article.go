@@ -8,6 +8,8 @@ type Article struct {
 	Content string
 }
 
+//go:generate mockgen -destination=./mock/mock_article_repository.go -package=mock github.com/rectcircle/go-test-demo/02-mock/domain ArticleRepository
+
 type ArticleRepository interface {
 	FindByID(id int64) (*Article, error)
 	Create(*Article) (int64, error)
