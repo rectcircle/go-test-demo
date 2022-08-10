@@ -8,11 +8,12 @@ type Article struct {
 	Content string
 }
 
-//go:generate mockgen -destination=./mock/mock_article_repository.go -package=mock github.com/rectcircle/go-test-demo/02-mock/domain ArticleRepository
+//go:generate mockgen -destination=./mock/mock_article_repository.go -package=mock -source=./article.go
+// 反射模式 go:generate mockgen -destination=./mock/mock_article_repository.go -package=mock github.com/rectcircle/go-test-demo/02-mock/domain ArticleRepository
 
 type ArticleRepository interface {
 	FindByID(id int64) (*Article, error)
-	Create(*Article) (int64, error)
+	Create(article *Article) (int64, error)
 }
 
 type ArticleService interface {

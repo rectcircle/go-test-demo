@@ -64,6 +64,7 @@ func Test_service_Publish(t *testing.T) {
 	m := mock.NewMockArticleRepository(ctrl)
 	data := map[int64]domain.Article{}
 	id := int64(1)
+	// m.EXPECT().FindByID(gomock.Eq(id)).Return(nil, domain.ErrRecordNotFound)
 	m.EXPECT().FindByID(gomock.Any()).DoAndReturn(func(id int64) (*domain.Article, error) {
 		if a, ok := data[id]; ok {
 			return &a, nil
